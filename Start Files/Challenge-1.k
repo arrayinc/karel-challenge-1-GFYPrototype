@@ -22,3 +22,45 @@ getting at least a little practice in decomposition. In your solution,
 decompose the program so that it includes a function for each step
 shown in the outline.
  */
+import "turns";
+
+function moveToNewspaper() {
+	turnRight();
+	move();
+	turnLeft();
+	while (facingSouth()) {
+		move();	
+		turnLeft();
+	}
+	move();
+}
+
+function pickUp() {
+	move();
+	move();
+	if (beepersPresent()) {
+		turnAround();
+		pickBeeper();
+	}
+	move();
+}
+
+function returnHome() {
+	while (noBeepersPresent() && facingEast()) {
+		turnAround();
+		move();
+	}
+	if (frontIsBlocked()) {
+		turnRight();
+		move();
+	}
+	move();
+	move();
+}
+
+
+function Solve() {
+	moveToNewspaper();
+	pickUp();
+	returnHome();
+}
